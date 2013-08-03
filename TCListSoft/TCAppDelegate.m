@@ -23,6 +23,7 @@
     else{
         [[NSUserDefaults standardUserDefaults] setBool:NO forKey:@"firstLaunch"];
     }
+    
     //
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
