@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="TCItem" representedClassName="TCItem" syncable="YES">
+        <attribute name="addToListDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="count" optional="YES" attributeType="Integer 32" syncable="YES"/>
+        <attribute name="didDone" optional="YES" attributeType="Boolean" defaultValueString="NO" syncable="YES"/>
+        <attribute name="orderingValue" optional="YES" attributeType="Integer 32" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="itemProperty" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TCItemProperty" inverseName="item" inverseEntity="TCItemProperty" syncable="YES"/>
+        <relationship name="list" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TCList" inverseName="itemArray" inverseEntity="TCList" syncable="YES"/>
+    </entity>
+    <entity name="TCItemCategory" representedClassName="TCItemCategory" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="interval" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="itemArray" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TCItemProperty" inverseName="category" inverseEntity="TCItemProperty" syncable="YES"/>
+    </entity>
+    <entity name="TCItemProperty" representedClassName="TCItemProperty" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thumbnail" optional="YES" transient="YES" syncable="YES"/>
+        <attribute name="thumbnailData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <relationship name="category" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TCItemCategory" inverseName="itemArray" inverseEntity="TCItemCategory" syncable="YES"/>
+        <relationship name="item" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="TCItem" inverseName="itemProperty" inverseEntity="TCItem" syncable="YES"/>
+    </entity>
+    <entity name="TCList" representedClassName="TCList" syncable="YES">
+        <attribute name="createdDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="notificationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="percent" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="itemArray" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TCItem" inverseName="list" inverseEntity="TCItem" syncable="YES"/>
+        <relationship name="listCategory" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TCListCategory" inverseName="listArray" inverseEntity="TCListCategory" syncable="YES"/>
+    </entity>
+    <entity name="TCListCategory" representedClassName="TCListCategory" syncable="YES">
+        <attribute name="content" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="interval" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="listArray" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TCList" inverseName="listCategory" inverseEntity="TCList" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TCItem" positionX="-99" positionY="-144" width="128" height="133"/>
+        <element name="TCItemCategory" positionX="-450" positionY="-157" width="128" height="103"/>
+        <element name="TCItemProperty" positionX="-261" positionY="-189" width="128" height="148"/>
+        <element name="TCList" positionX="108" positionY="-144" width="128" height="133"/>
+        <element name="TCListCategory" positionX="394" positionY="-114" width="128" height="105"/>
+    </elements>
+</model>
