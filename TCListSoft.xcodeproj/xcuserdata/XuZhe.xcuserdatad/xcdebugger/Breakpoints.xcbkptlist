@@ -69,7 +69,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TCListSoft/Model/TCDataStore.m"
@@ -121,7 +121,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TCListSoft/Controller/TCListViewController.m"
@@ -134,7 +134,7 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TCListSoft/Model/TCDataStore.m"
@@ -151,29 +151,29 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TCListSoft/Controller/TCEditListViewControler.m"
-         timestampString = "397097094.447082"
+         timestampString = "397218914.961503"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "75"
-         endingLineNumber = "75"
+         startingLineNumber = "81"
+         endingLineNumber = "81"
          landmarkName = "-tableView:cellForRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TCListSoft/Controller/TCEditListViewControler.m"
-         timestampString = "397097094.447082"
+         timestampString = "397218914.961503"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "66"
-         endingLineNumber = "66"
+         startingLineNumber = "72"
+         endingLineNumber = "72"
          landmarkName = "-tableView:numberOfRowsInSection:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "TCListSoft/Controller/TCListViewController.m"
@@ -183,6 +183,19 @@
          startingLineNumber = "52"
          endingLineNumber = "52"
          landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TCListSoft/Controller/TCEditListViewControler.m"
+         timestampString = "397218914.961503"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "128"
+         endingLineNumber = "128"
+         landmarkName = "-changeNotifDate:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

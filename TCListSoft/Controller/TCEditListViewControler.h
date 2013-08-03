@@ -13,9 +13,11 @@
     __weak IBOutlet UILabel *createdTimeLabel;
     __weak IBOutlet UILabel *notificationDateLabel;
     __weak IBOutlet UITableView *tableView;
-    __weak IBOutlet UIPickerView *categoryPicker;
+    UIPickerView *categoryPicker;
+    IBOutlet UIToolbar *toolBar;
     
 }
+- (IBAction)selectButton:(id)sender;
 @property (nonatomic,strong)TCList *list;
 -(void)addNewItem;
 - (IBAction)changeNotifDate:(id)sender;

@@ -39,6 +39,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    categoryPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 216)];
+    categoryPicker.delegate = self;
+    categoryPicker.dataSource = self;
+    toolBar.frame = CGRectMake(0, 480, 320, 44);
+    [self.view addSubview:categoryPicker];
+    [self.view addSubview:toolBar];
     // Do any additional setup after loading the view from its nib.
     createdTimeLabel.text = [Tools stringFromDate:[list valueForKey:@"createdDate"]];
 }
@@ -89,6 +95,7 @@
 }
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+    
     return @"test";
 }
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -104,7 +111,27 @@
 
 - (IBAction)changeNotifDate:(id)sender
 {
-//    if([categoryPicker ])
-    [categoryPicker setHidden:NO];
+    //动画弹出显示catagoryPicker
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.6];//动画时间长度，单位秒，浮点数
+    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+    toolBar.frame = CGRectMake(0, 156, 320, 44);
+    categoryPicker.frame = CGRectMake(0, 200, 320, 260);
+    
+    [UIView setAnimationDelegate:self];
+    // 动画完毕后调用animationFinished
+    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+    [UIView commitAnimations];
+//    [categoryPicker setHidden:NO];
+}
+-(void)animationFinished
+{
+    NSLog(@"动画结束!");
+}
+- (IBAction)selectButton:(id)sender
+{
+    NSLog(@"HAHA");
 }
 @end
