@@ -16,5 +16,5 @@
 }
 
 - (IBAction)showSettings:(id)sender;
-
+- (IBAction)setEditing:(id)sender;
 @end
