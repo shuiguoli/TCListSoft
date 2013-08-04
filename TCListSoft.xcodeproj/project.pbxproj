@@ -20,6 +20,10 @@
 		324BAC8B17AA7F9A00E817BA /* TCListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BAC8A17AA7F9900E817BA /* TCListViewController.xib */; };
 		324BAC9517AB312F00E817BA /* 460.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 324BAC9417AB312F00E817BA /* 460.jpg */; };
 		324BAC9817AB385800E817BA /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BAC9717AB385700E817BA /* Tools.m */; };
+		32BB777F17ADCF4200F81C2C /* TCListCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BB777D17ADCF4200F81C2C /* TCListCategoryViewController.m */; };
+		32BB778017ADCF4200F81C2C /* TCListCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BB777E17ADCF4200F81C2C /* TCListCategoryViewController.xib */; };
+		32BB778817ADD1A200F81C2C /* TCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BB778617ADD1A200F81C2C /* TCSettingsViewController.m */; };
+		32BB778917ADD1A200F81C2C /* TCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BB778717ADD1A200F81C2C /* TCSettingsViewController.xib */; };
 		32DD77CC17A7570F0019B499 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DD77CB17A7570F0019B499 /* UIKit.framework */; };
 		32DD77CE17A7570F0019B499 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DD77CD17A7570F0019B499 /* Foundation.framework */; };
 		32DD77D017A7570F0019B499 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32DD77CF17A7570F0019B499 /* CoreGraphics.framework */; };
@@ -61,6 +65,12 @@
 		324BAC9417AB312F00E817BA /* 460.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 460.jpg; sourceTree = "<group>"; };
 		324BAC9617AB385700E817BA /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		324BAC9717AB385700E817BA /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
+		32BB777C17ADCF4200F81C2C /* TCListCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCListCategoryViewController.h; path = Controller/TCListCategoryViewController.h; sourceTree = "<group>"; };
+		32BB777D17ADCF4200F81C2C /* TCListCategoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCListCategoryViewController.m; path = Controller/TCListCategoryViewController.m; sourceTree = "<group>"; };
+		32BB777E17ADCF4200F81C2C /* TCListCategoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TCListCategoryViewController.xib; path = Controller/TCListCategoryViewController.xib; sourceTree = "<group>"; };
+		32BB778517ADD1A200F81C2C /* TCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TCSettingsViewController.h; sourceTree = "<group>"; };
+		32BB778617ADD1A200F81C2C /* TCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCSettingsViewController.m; sourceTree = "<group>"; };
+		32BB778717ADD1A200F81C2C /* TCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TCSettingsViewController.xib; sourceTree = "<group>"; };
 		32DD77C817A7570F0019B499 /* TCListSoft.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TCListSoft.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32DD77CB17A7570F0019B499 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		32DD77CD17A7570F0019B499 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -119,6 +129,14 @@
 				324BAC8317AA51CA00E817BA /* TCItemsViewController.h */,
 				324BAC8417AA51CA00E817BA /* TCItemsViewController.m */,
 				324BAC8517AA51CA00E817BA /* TCItemsViewController.xib */,
+				322E58EB17A7B244001E0B2A /* TCItemViewController.h */,
+				322E58EC17A7B244001E0B2A /* TCItemViewController.m */,
+				32BB777C17ADCF4200F81C2C /* TCListCategoryViewController.h */,
+				32BB777D17ADCF4200F81C2C /* TCListCategoryViewController.m */,
+				32BB777E17ADCF4200F81C2C /* TCListCategoryViewController.xib */,
+				32BB778517ADD1A200F81C2C /* TCSettingsViewController.h */,
+				32BB778617ADD1A200F81C2C /* TCSettingsViewController.m */,
+				32BB778717ADD1A200F81C2C /* TCSettingsViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -156,7 +174,6 @@
 		32DD77BF17A7570F0019B499 = {
 			isa = PBXGroup;
 			children = (
-				324BAC7817AA35A500E817BA /* QuartzCore.framework */,
 				32DD77D317A7570F0019B499 /* TCListSoft */,
 				32DD77CA17A7570F0019B499 /* Frameworks */,
 				32DD77C917A7570F0019B499 /* Products */,
@@ -174,6 +191,7 @@
 		32DD77CA17A7570F0019B499 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				324BAC7817AA35A500E817BA /* QuartzCore.framework */,
 				32DD77CB17A7570F0019B499 /* UIKit.framework */,
 				32DD77CD17A7570F0019B499 /* Foundation.framework */,
 				32DD77CF17A7570F0019B499 /* CoreGraphics.framework */,
@@ -195,8 +213,6 @@
 				324BAC9617AB385700E817BA /* Tools.h */,
 				324BAC9717AB385700E817BA /* Tools.m */,
 				32DD77D417A7570F0019B499 /* Supporting Files */,
-				322E58EB17A7B244001E0B2A /* TCItemViewController.h */,
-				322E58EC17A7B244001E0B2A /* TCItemViewController.m */,
 			);
 			path = TCListSoft;
 			sourceTree = "<group>";
@@ -311,6 +327,8 @@
 				324BAC8717AA51CA00E817BA /* TCItemsViewController.xib in Resources */,
 				324BAC8B17AA7F9A00E817BA /* TCListViewController.xib in Resources */,
 				324BAC9517AB312F00E817BA /* 460.jpg in Resources */,
+				32BB778017ADCF4200F81C2C /* TCListCategoryViewController.xib in Resources */,
+				32BB778917ADD1A200F81C2C /* TCSettingsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +372,8 @@
 				324BAC8117AA49CB00E817BA /* TCEditListViewControler.m in Sources */,
 				324BAC8617AA51CA00E817BA /* TCItemsViewController.m in Sources */,
 				324BAC9817AB385800E817BA /* Tools.m in Sources */,
+				32BB777F17ADCF4200F81C2C /* TCListCategoryViewController.m in Sources */,
+				32BB778817ADD1A200F81C2C /* TCSettingsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
