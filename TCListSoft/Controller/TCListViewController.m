@@ -149,7 +149,7 @@
     [dataStore saveChanges];
     UIView *view = [[UIView alloc] initWithFrame:tableView.frame];
     view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    tableView.backgroundView.backgroundColor = view;
+    tableView.backgroundView = view;
     debugMethod();
 }
 

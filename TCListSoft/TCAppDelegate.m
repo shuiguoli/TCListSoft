@@ -9,6 +9,7 @@
 #import "TCAppDelegate.h"
 #import "TCItemViewController.h"
 #import "TCListViewController.h"
+#import "TCListCategoryViewController.h"
 
 @implementation TCAppDelegate
 
@@ -29,7 +30,8 @@
     // Override point for customization after application launch.
     TCListViewController *listViewController = [[TCListViewController alloc] initWithNibName:nil bundle:nil];
     UINavigationController *frontViewController = [[UINavigationController alloc] initWithRootViewController:listViewController];
-    TCItemViewController *leftViewController = [[TCItemViewController alloc] initWithStyle:UITableViewStyleGrouped];
+    TCListCategoryViewController *leftViewController = [[TCListCategoryViewController alloc] initWithNibName:nil bundle:nil];
+//    TCItemViewController *leftViewController = [[TCItemViewController alloc] initWithStyle:UITableViewStyleGrouped];
     PKRevealController *rootViewController = [PKRevealController revealControllerWithFrontViewController:frontViewController leftViewController:leftViewController options:nil];
     
     [self.window setRootViewController:rootViewController];

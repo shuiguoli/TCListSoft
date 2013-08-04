@@ -12,9 +12,10 @@
 #import "TCListCategory.h"
 #import "TCItem.h"
 #import "Tools.h"
+#import "TCDataStore.h"
 @interface TCEditListViewControler ()
 {
-    
+    NSArray *allListCategorys;
 }
 
 
@@ -30,7 +31,7 @@
     if (self) {
         UINavigationItem *n = [self navigationItem];
         UIBarButtonItem *bbi = [[UIBarButtonItem alloc ]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem)];
-        
+        allListCategorys = [[TCDataStore sharedStore] allListCategorys];
         [n setRightBarButtonItem:bbi];
     }
     return self;
@@ -39,6 +40,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    categoryPicker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 480, 320, 216)];
+    categoryPicker.delegate = self;
+    categoryPicker.dataSource = self;
+    categoryPicker.showsSelectionIndicator = YES;
+    toolBar.frame = CGRectMake(0, 480, 320, 44);
+    [self.view addSubview:categoryPicker];
+    [self.view addSubview:toolBar];
     // Do any additional setup after loading the view from its nib.
     createdTimeLabel.text = [Tools stringFromDate:[list valueForKey:@"createdDate"]];
 }
@@ -82,14 +90,19 @@
     cell.textLabel.text = [item valueForKeyPath:@"itemProperty.name"];
     return cell;
 }
+
 #pragma mark - pickerViewDelegate
+
 -(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return 4;
+    return [allListCategorys count];
 }
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return @"test";
+    TCListCategory *listCategory = [allListCategorys objectAtIndex:row];
+    NSString *str = [listCategory valueForKey:@"name"];
+    
+    return str;
 }
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
@@ -104,7 +117,45 @@
 
 - (IBAction)changeNotifDate:(id)sender
 {
-//    if([categoryPicker ])
-    [categoryPicker setHidden:NO];
+    //动画弹出显示catagoryPicker
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.3];//动画时间长度，单位秒，浮点数  //后期修改
+    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+    toolBar.frame = CGRectMake(0, 156, 320, 44);
+    categoryPicker.frame = CGRectMake(0, 200, 320, 216);
+    
+    [UIView setAnimationDelegate:self];
+    // 动画完毕后调用animationFinished
+    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+    [UIView commitAnimations];
 }
+-(void)animationFinished
+{
+    NSLog(@"动画结束!");
+}
+- (IBAction)selectButton:(id)sender
+{
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [UIView beginAnimations:nil context:context];
+    [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    [UIView setAnimationDuration:0.3];//动画时间长度，单位秒，浮点数  //后期修改
+    toolBar.frame = CGRectMake(0, 480, 320, 44);
+    categoryPicker.frame = CGRectMake(0, 480, 320, 216);
+    
+    [UIView setAnimationDelegate:self];
+    // 动画完毕后调用animationFinished
+    [UIView setAnimationDidStopSelector:@selector(animationFinished)];
+    [UIView commitAnimations];
+    NSInteger index = [categoryPicker selectedRowInComponent:0];
+    NSTimeInterval intervalDate = [[[allListCategorys objectAtIndex:index] valueForKey:@"interval"] doubleValue];
+    NSDate *time = [list valueForKey:@"createdDate"];
+//    NSDate *listCreatedDate = [NSDate dateWithTimeIntervalSince1970:time];
+    NSDate *notifDate = [NSDate dateWithTimeInterval:intervalDate sinceDate:time];
+    notificationDateLabel.text = [Tools stringFromDate:notifDate];
+    NSLog(@"HAHA");
+}
+
+
 @end
