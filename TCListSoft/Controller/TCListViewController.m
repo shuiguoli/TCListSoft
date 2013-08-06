@@ -11,7 +11,7 @@
 #import "TCList.h"
 #import "TCListCategory.h"
 #import "TCDataStore.h"
-#import "TCEditListViewControler.h"
+#import "TCEditListViewController.h"
 @interface TCListViewController ()
 {
     NSArray *allLists;
@@ -137,7 +137,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     // Navigation logic may go here. Create and push another view controller.
     
-     TCEditListViewControler *detailViewController = [[TCEditListViewControler alloc] initWithNibName:nil bundle:nil];
+     TCEditListViewController *detailViewController = [[TCEditListViewController alloc] initWithNibName:nil bundle:nil];
     [detailViewController setList:[allLists objectAtIndex:indexPath.row]];
      // Pass the selected object to the new view controller.
      [self.navigationController pushViewController:detailViewController animated:YES];

@@ -9,16 +9,10 @@
 /* Begin PBXBuildFile section */
 		322E58ED17A7B244001E0B2A /* TCItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 322E58EC17A7B244001E0B2A /* TCItemViewController.m */; };
 		3248EEEC17A90B9D0024B0C4 /* TCListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248EEEB17A90B9D0024B0C4 /* TCListViewController.m */; };
-		3248F02D17AA34980024B0C4 /* PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248F02817AA34980024B0C4 /* PKRevealController.m */; };
-		3248F02E17AA34980024B0C4 /* PKRevealControllerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248F02A17AA34980024B0C4 /* PKRevealControllerContainerView.m */; };
-		3248F02F17AA34980024B0C4 /* UIViewController+PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3248F02C17AA34980024B0C4 /* UIViewController+PKRevealController.m */; };
 		324BAC7917AA35A500E817BA /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324BAC7817AA35A500E817BA /* QuartzCore.framework */; };
-		324BAC8117AA49CB00E817BA /* TCEditListViewControler.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BAC7F17AA49CB00E817BA /* TCEditListViewControler.m */; };
-		324BAC8217AA49CB00E817BA /* TCEditListViewControler.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BAC8017AA49CB00E817BA /* TCEditListViewControler.xib */; };
 		324BAC8617AA51CA00E817BA /* TCItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BAC8417AA51CA00E817BA /* TCItemsViewController.m */; };
 		324BAC8717AA51CA00E817BA /* TCItemsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BAC8517AA51CA00E817BA /* TCItemsViewController.xib */; };
 		324BAC8B17AA7F9A00E817BA /* TCListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 324BAC8A17AA7F9900E817BA /* TCListViewController.xib */; };
-		324BAC9517AB312F00E817BA /* 460.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 324BAC9417AB312F00E817BA /* 460.jpg */; };
 		324BAC9817AB385800E817BA /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 324BAC9717AB385700E817BA /* Tools.m */; };
 		32BB777F17ADCF4200F81C2C /* TCListCategoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BB777D17ADCF4200F81C2C /* TCListCategoryViewController.m */; };
 		32BB778017ADCF4200F81C2C /* TCListCategoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32BB777E17ADCF4200F81C2C /* TCListCategoryViewController.xib */; };
@@ -31,9 +25,6 @@
 		32DD77D817A7570F0019B499 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32DD77D617A7570F0019B499 /* InfoPlist.strings */; };
 		32DD77DA17A7570F0019B499 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD77D917A7570F0019B499 /* main.m */; };
 		32DD77DE17A7570F0019B499 /* TCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD77DD17A7570F0019B499 /* TCAppDelegate.m */; };
-		32DD77E017A7570F0019B499 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DD77DF17A7570F0019B499 /* Default.png */; };
-		32DD77E217A7570F0019B499 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DD77E117A7570F0019B499 /* Default@2x.png */; };
-		32DD77E417A7570F0019B499 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 32DD77E317A7570F0019B499 /* Default-568h@2x.png */; };
 		32DD77E717A7570F0019B499 /* TCListSoft.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32DD77E517A7570F0019B499 /* TCListSoft.xcdatamodeld */; };
 		32DD77FF17A767140019B499 /* TCDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD77FE17A767140019B499 /* TCDataStore.m */; };
 		32DD780A17A7676F0019B499 /* TCItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD780117A7676F0019B499 /* TCItem.m */; };
@@ -41,6 +32,15 @@
 		32DD780C17A7676F0019B499 /* TCItemProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD780517A7676F0019B499 /* TCItemProperty.m */; };
 		32DD780D17A7676F0019B499 /* TCList.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD780717A7676F0019B499 /* TCList.m */; };
 		32DD780E17A7676F0019B499 /* TCListCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 32DD780917A7676F0019B499 /* TCListCategory.m */; };
+		84B33D3D17AE9AFD00984C56 /* PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B33D3817AE9AFD00984C56 /* PKRevealController.m */; };
+		84B33D3E17AE9AFD00984C56 /* PKRevealControllerContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B33D3A17AE9AFD00984C56 /* PKRevealControllerContainerView.m */; };
+		84B33D3F17AE9AFD00984C56 /* UIViewController+PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84B33D3C17AE9AFD00984C56 /* UIViewController+PKRevealController.m */; };
+		84FBC99F17B0A20C00A7B8D3 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FBC99E17B0A20C00A7B8D3 /* Default.png */; };
+		84FBC9A117B0A21B00A7B8D3 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FBC9A017B0A21B00A7B8D3 /* Default@2x.png */; };
+		84FBC9A317B0A22800A7B8D3 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 84FBC9A217B0A22800A7B8D3 /* Default-568h@2x.png */; };
+		84FBC9A517B0A23000A7B8D3 /* 460.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 84FBC9A417B0A23000A7B8D3 /* 460.jpg */; };
+		84FBC9AE17B0BB7300A7B8D3 /* TCEditListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 84FBC9AC17B0BB7000A7B8D3 /* TCEditListViewController.m */; };
+		84FBC9AF17B0BB7300A7B8D3 /* TCEditListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84FBC9AD17B0BB7100A7B8D3 /* TCEditListViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,21 +48,11 @@
 		322E58EC17A7B244001E0B2A /* TCItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TCItemViewController.m; sourceTree = "<group>"; };
 		3248EEEA17A90B9D0024B0C4 /* TCListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCListViewController.h; path = Controller/TCListViewController.h; sourceTree = "<group>"; };
 		3248EEEB17A90B9D0024B0C4 /* TCListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCListViewController.m; path = Controller/TCListViewController.m; sourceTree = "<group>"; };
-		3248F02717AA34980024B0C4 /* PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealController.h; sourceTree = "<group>"; };
-		3248F02817AA34980024B0C4 /* PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealController.m; sourceTree = "<group>"; };
-		3248F02917AA34980024B0C4 /* PKRevealControllerContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealControllerContainerView.h; sourceTree = "<group>"; };
-		3248F02A17AA34980024B0C4 /* PKRevealControllerContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealControllerContainerView.m; sourceTree = "<group>"; };
-		3248F02B17AA34980024B0C4 /* UIViewController+PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PKRevealController.h"; sourceTree = "<group>"; };
-		3248F02C17AA34980024B0C4 /* UIViewController+PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PKRevealController.m"; sourceTree = "<group>"; };
 		324BAC7817AA35A500E817BA /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		324BAC7E17AA49CB00E817BA /* TCEditListViewControler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCEditListViewControler.h; path = Controller/TCEditListViewControler.h; sourceTree = "<group>"; };
-		324BAC7F17AA49CB00E817BA /* TCEditListViewControler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCEditListViewControler.m; path = Controller/TCEditListViewControler.m; sourceTree = "<group>"; };
-		324BAC8017AA49CB00E817BA /* TCEditListViewControler.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TCEditListViewControler.xib; path = Controller/TCEditListViewControler.xib; sourceTree = "<group>"; };
 		324BAC8317AA51CA00E817BA /* TCItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCItemsViewController.h; path = Controller/TCItemsViewController.h; sourceTree = "<group>"; };
 		324BAC8417AA51CA00E817BA /* TCItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCItemsViewController.m; path = Controller/TCItemsViewController.m; sourceTree = "<group>"; };
 		324BAC8517AA51CA00E817BA /* TCItemsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TCItemsViewController.xib; path = Controller/TCItemsViewController.xib; sourceTree = "<group>"; };
 		324BAC8A17AA7F9900E817BA /* TCListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TCListViewController.xib; path = Controller/TCListViewController.xib; sourceTree = "<group>"; };
-		324BAC9417AB312F00E817BA /* 460.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 460.jpg; sourceTree = "<group>"; };
 		324BAC9617AB385700E817BA /* Tools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tools.h; sourceTree = "<group>"; };
 		324BAC9717AB385700E817BA /* Tools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tools.m; sourceTree = "<group>"; };
 		32BB777C17ADCF4200F81C2C /* TCListCategoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCListCategoryViewController.h; path = Controller/TCListCategoryViewController.h; sourceTree = "<group>"; };
@@ -82,9 +72,6 @@
 		32DD77DB17A7570F0019B499 /* TCListSoft-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TCListSoft-Prefix.pch"; sourceTree = "<group>"; };
 		32DD77DC17A7570F0019B499 /* TCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCAppDelegate.h; sourceTree = "<group>"; };
 		32DD77DD17A7570F0019B499 /* TCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCAppDelegate.m; sourceTree = "<group>"; };
-		32DD77DF17A7570F0019B499 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		32DD77E117A7570F0019B499 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		32DD77E317A7570F0019B499 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		32DD77E617A7570F0019B499 /* TCListSoft.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TCListSoft.xcdatamodel; sourceTree = "<group>"; };
 		32DD77FD17A767140019B499 /* TCDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCDataStore.h; path = Model/TCDataStore.h; sourceTree = "<group>"; };
 		32DD77FE17A767140019B499 /* TCDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCDataStore.m; path = Model/TCDataStore.m; sourceTree = "<group>"; };
@@ -99,6 +86,19 @@
 		32DD780817A7676F0019B499 /* TCListCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCListCategory.h; path = Model/TCListCategory.h; sourceTree = "<group>"; };
 		32DD780917A7676F0019B499 /* TCListCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCListCategory.m; path = Model/TCListCategory.m; sourceTree = "<group>"; };
 		32DD780F17A777980019B499 /* Consts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Consts.h; sourceTree = "<group>"; };
+		84B33D3717AE9AFD00984C56 /* PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealController.h; sourceTree = "<group>"; };
+		84B33D3817AE9AFD00984C56 /* PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealController.m; sourceTree = "<group>"; };
+		84B33D3917AE9AFD00984C56 /* PKRevealControllerContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKRevealControllerContainerView.h; sourceTree = "<group>"; };
+		84B33D3A17AE9AFD00984C56 /* PKRevealControllerContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKRevealControllerContainerView.m; sourceTree = "<group>"; };
+		84B33D3B17AE9AFD00984C56 /* UIViewController+PKRevealController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PKRevealController.h"; sourceTree = "<group>"; };
+		84B33D3C17AE9AFD00984C56 /* UIViewController+PKRevealController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PKRevealController.m"; sourceTree = "<group>"; };
+		84FBC99E17B0A20C00A7B8D3 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		84FBC9A017B0A21B00A7B8D3 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		84FBC9A217B0A22800A7B8D3 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		84FBC9A417B0A23000A7B8D3 /* 460.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 460.jpg; sourceTree = "<group>"; };
+		84FBC9AB17B0BB6E00A7B8D3 /* TCEditListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TCEditListViewController.h; path = Controller/TCEditListViewController.h; sourceTree = "<group>"; };
+		84FBC9AC17B0BB7000A7B8D3 /* TCEditListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TCEditListViewController.m; path = Controller/TCEditListViewController.m; sourceTree = "<group>"; };
+		84FBC9AD17B0BB7100A7B8D3 /* TCEditListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TCEditListViewController.xib; path = Controller/TCEditListViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +123,9 @@
 				3248EEEA17A90B9D0024B0C4 /* TCListViewController.h */,
 				3248EEEB17A90B9D0024B0C4 /* TCListViewController.m */,
 				324BAC8A17AA7F9900E817BA /* TCListViewController.xib */,
-				324BAC7E17AA49CB00E817BA /* TCEditListViewControler.h */,
-				324BAC7F17AA49CB00E817BA /* TCEditListViewControler.m */,
-				324BAC8017AA49CB00E817BA /* TCEditListViewControler.xib */,
+				84FBC9AB17B0BB6E00A7B8D3 /* TCEditListViewController.h */,
+				84FBC9AC17B0BB7000A7B8D3 /* TCEditListViewController.m */,
+				84FBC9AD17B0BB7100A7B8D3 /* TCEditListViewController.xib */,
 				324BAC8317AA51CA00E817BA /* TCItemsViewController.h */,
 				324BAC8417AA51CA00E817BA /* TCItemsViewController.m */,
 				324BAC8517AA51CA00E817BA /* TCItemsViewController.xib */,
@@ -144,8 +144,8 @@
 		3248EEED17A911390024B0C4 /* Vendor */ = {
 			isa = PBXGroup;
 			children = (
+				84B33D3617AE9AFD00984C56 /* PKRevealController */,
 				3248EEEE17A9120F0024B0C4 /* SSToolkit */,
-				3248F02617AA34980024B0C4 /* PKRevealController */,
 			);
 			name = Vendor;
 			sourceTree = "<group>";
@@ -155,20 +155,6 @@
 			children = (
 			);
 			path = SSToolkit;
-			sourceTree = "<group>";
-		};
-		3248F02617AA34980024B0C4 /* PKRevealController */ = {
-			isa = PBXGroup;
-			children = (
-				3248F02717AA34980024B0C4 /* PKRevealController.h */,
-				3248F02817AA34980024B0C4 /* PKRevealController.m */,
-				3248F02917AA34980024B0C4 /* PKRevealControllerContainerView.h */,
-				3248F02A17AA34980024B0C4 /* PKRevealControllerContainerView.m */,
-				3248F02B17AA34980024B0C4 /* UIViewController+PKRevealController.h */,
-				3248F02C17AA34980024B0C4 /* UIViewController+PKRevealController.m */,
-			);
-			name = PKRevealController;
-			path = Vendor/PKRevealController;
 			sourceTree = "<group>";
 		};
 		32DD77BF17A7570F0019B499 = {
@@ -220,14 +206,14 @@
 		32DD77D417A7570F0019B499 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				324BAC9417AB312F00E817BA /* 460.jpg */,
 				32DD77D517A7570F0019B499 /* TCListSoft-Info.plist */,
 				32DD77D617A7570F0019B499 /* InfoPlist.strings */,
 				32DD77D917A7570F0019B499 /* main.m */,
 				32DD77DB17A7570F0019B499 /* TCListSoft-Prefix.pch */,
-				32DD77DF17A7570F0019B499 /* Default.png */,
-				32DD77E117A7570F0019B499 /* Default@2x.png */,
-				32DD77E317A7570F0019B499 /* Default-568h@2x.png */,
+				84FBC9A417B0A23000A7B8D3 /* 460.jpg */,
+				84FBC9A217B0A22800A7B8D3 /* Default-568h@2x.png */,
+				84FBC9A017B0A21B00A7B8D3 /* Default@2x.png */,
+				84FBC99E17B0A20C00A7B8D3 /* Default.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -251,6 +237,19 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		84B33D3617AE9AFD00984C56 /* PKRevealController */ = {
+			isa = PBXGroup;
+			children = (
+				84B33D3717AE9AFD00984C56 /* PKRevealController.h */,
+				84B33D3817AE9AFD00984C56 /* PKRevealController.m */,
+				84B33D3917AE9AFD00984C56 /* PKRevealControllerContainerView.h */,
+				84B33D3A17AE9AFD00984C56 /* PKRevealControllerContainerView.m */,
+				84B33D3B17AE9AFD00984C56 /* UIViewController+PKRevealController.h */,
+				84B33D3C17AE9AFD00984C56 /* UIViewController+PKRevealController.m */,
+			);
+			path = PKRevealController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,7 +260,7 @@
 				32DD77C417A7570F0019B499 /* Sources */,
 				32DD77C517A7570F0019B499 /* Frameworks */,
 				32DD77C617A7570F0019B499 /* Resources */,
-				322E58EE17A7C49F001E0B2A /* ShellScript */,
+				322E58EE17A7C49F001E0B2A /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -320,28 +319,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				32DD77D817A7570F0019B499 /* InfoPlist.strings in Resources */,
-				32DD77E017A7570F0019B499 /* Default.png in Resources */,
-				32DD77E217A7570F0019B499 /* Default@2x.png in Resources */,
-				32DD77E417A7570F0019B499 /* Default-568h@2x.png in Resources */,
-				324BAC8217AA49CB00E817BA /* TCEditListViewControler.xib in Resources */,
 				324BAC8717AA51CA00E817BA /* TCItemsViewController.xib in Resources */,
 				324BAC8B17AA7F9A00E817BA /* TCListViewController.xib in Resources */,
-				324BAC9517AB312F00E817BA /* 460.jpg in Resources */,
 				32BB778017ADCF4200F81C2C /* TCListCategoryViewController.xib in Resources */,
 				32BB778917ADD1A200F81C2C /* TCSettingsViewController.xib in Resources */,
+				84FBC99F17B0A20C00A7B8D3 /* Default.png in Resources */,
+				84FBC9A117B0A21B00A7B8D3 /* Default@2x.png in Resources */,
+				84FBC9A317B0A22800A7B8D3 /* Default-568h@2x.png in Resources */,
+				84FBC9A517B0A23000A7B8D3 /* 460.jpg in Resources */,
+				84FBC9AF17B0BB7300A7B8D3 /* TCEditListViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		322E58EE17A7C49F001E0B2A /* ShellScript */ = {
+		322E58EE17A7C49F001E0B2A /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run Script";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,14 +366,14 @@
 				32DD780E17A7676F0019B499 /* TCListCategory.m in Sources */,
 				322E58ED17A7B244001E0B2A /* TCItemViewController.m in Sources */,
 				3248EEEC17A90B9D0024B0C4 /* TCListViewController.m in Sources */,
-				3248F02D17AA34980024B0C4 /* PKRevealController.m in Sources */,
-				3248F02E17AA34980024B0C4 /* PKRevealControllerContainerView.m in Sources */,
-				3248F02F17AA34980024B0C4 /* UIViewController+PKRevealController.m in Sources */,
-				324BAC8117AA49CB00E817BA /* TCEditListViewControler.m in Sources */,
 				324BAC8617AA51CA00E817BA /* TCItemsViewController.m in Sources */,
 				324BAC9817AB385800E817BA /* Tools.m in Sources */,
 				32BB777F17ADCF4200F81C2C /* TCListCategoryViewController.m in Sources */,
 				32BB778817ADD1A200F81C2C /* TCSettingsViewController.m in Sources */,
+				84B33D3D17AE9AFD00984C56 /* PKRevealController.m in Sources */,
+				84B33D3E17AE9AFD00984C56 /* PKRevealControllerContainerView.m in Sources */,
+				84B33D3F17AE9AFD00984C56 /* UIViewController+PKRevealController.m in Sources */,
+				84FBC9AE17B0BB7300A7B8D3 /* TCEditListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
