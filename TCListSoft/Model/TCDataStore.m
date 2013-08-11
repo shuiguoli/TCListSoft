@@ -12,9 +12,10 @@
 #import "TCItemProperty.h"
 #import "TCList.h"
 #import "TCListCategory.h"
-
+#import "TCAppDelegate.h"
 @implementation TCDataStore
 
+@synthesize context = _context;
 
 + (TCDataStore *)sharedStore
 {
@@ -37,43 +38,22 @@
     if(self)
     {
         //从xcdatamodeld文件读取信息
-        model = [NSManagedObjectModel mergedModelFromBundles:nil];
-//        NSLog(@"model = %@", model);
-        
-        NSPersistentStoreCoordinator *psc = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:model];
-
-        //设置db存放路径
-        NSString *path = [self dbPath];
-        NSURL *storeURL = [NSURL fileURLWithPath:path];
-        
-        NSError *error = nil;
-        
-        if (![psc addPersistentStoreWithType:NSSQLiteStoreType
-                               configuration:nil
-                                         URL:storeURL
-                                     options:nil
-                                       error:&error]) {
-            [NSException raise:@"Open failed"
-                        format:@"Reason: %@", [error localizedDescription]];
-        }
-        
-        // 给context赋值
-        context = [[NSManagedObjectContext alloc] init];
-        [context setPersistentStoreCoordinator:psc];
-        
-        // 设置不开启Undo
-        [context setUndoManager:nil];
+        self.context = [(TCAppDelegate*)[[UIApplication sharedApplication] delegate] managedObjectContext];
         
         [self loadAllItemCategorys];
         [self loadAllItemPropertys];
         [self loadAllItems];
         [self loadAllListCategorys];
         [self loadAllLists];
-
+        
     }
     return self;
 }
 
+- (NSManagedObjectContext*)moContext
+{
+    return _context;
+}
 #pragma mark - Item
 -(NSArray *)allItems
 {
@@ -86,7 +66,7 @@
     {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
-        NSEntityDescription *e = [[model entitiesByName] objectForKey:@"TCItem"];
+        NSEntityDescription *e = [NSEntityDescription entityForName:@"TCItem" inManagedObjectContext:_context];
         [request setEntity:e];
         
         NSSortDescriptor *sd = [NSSortDescriptor
@@ -95,7 +75,7 @@
         [request setSortDescriptors:[NSArray arrayWithObject:sd]];
         
         NSError *error;
-        NSArray *result = [context executeFetchRequest:request error:&error];
+        NSArray *result = [self.context executeFetchRequest:request error:&error];
         if (!result)
         {
             debugMethod();
@@ -118,10 +98,10 @@
     {
         order = [[allItems lastObject] orderingValue] + 1;
     }
-//    NSLog(@"Adding after %d items, order = %d", [allItems count], order);
+    //    NSLog(@"Adding after %d items, order = %d", [allItems count], order);
     
     TCItem *p = [NSEntityDescription insertNewObjectForEntityForName:@"TCItem"
-                                               inManagedObjectContext:context];
+                                              inManagedObjectContext:self.context];
     
     [p setOrderingValue:order];
     
@@ -133,7 +113,7 @@
 - (void)removeItem:(TCItem *)p
 {
     //    NSString *key = [p
-    [context deleteObject:p];
+    [self.context deleteObject:p];
     [allItems removeObjectIdenticalTo:p];
 }
 
@@ -195,17 +175,17 @@
     {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
-        NSEntityDescription *e = [[model entitiesByName] objectForKey:@"TCItemProperty"];
+        NSEntityDescription *e = [NSEntityDescription entityForName:@"TCItemProperty" inManagedObjectContext:_context];
         [request setEntity:e];
         
         //需要排序时添加
-//        NSSortDescriptor *sd = [NSSortDescriptor
-//                                sortDescriptorWithKey:@"orderingValue"
-//                                ascending:YES];
-//        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
+        //        NSSortDescriptor *sd = [NSSortDescriptor
+        //                                sortDescriptorWithKey:@"orderingValue"
+        //                                ascending:YES];
+        //        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
         
         NSError *error;
-        NSArray *result = [context executeFetchRequest:request error:&error];
+        NSArray *result = [self.context executeFetchRequest:request error:&error];
         if (!result)
         {
             debugMethod();
@@ -215,12 +195,12 @@
         
         allItemPropertys = [[NSMutableArray alloc] initWithArray:result];
     }
-
+    
 }
 
 - (TCItemProperty *)createItemProperty
 {
-    TCItemProperty *ip = [NSEntityDescription insertNewObjectForEntityForName:@"TCItemProperty" inManagedObjectContext:context];
+    TCItemProperty *ip = [NSEntityDescription insertNewObjectForEntityForName:@"TCItemProperty" inManagedObjectContext:self.context];
     
     [allItemPropertys addObject:ip];
     return ip;
@@ -228,7 +208,7 @@
 
 - (void)removeItemProperty:(TCItemProperty*)p
 {
-    [context deleteObject:p];
+    [self.context deleteObject:p];
     [allItemPropertys removeObject:p];
 }
 
@@ -245,7 +225,7 @@
     {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
-        NSEntityDescription *e = [[model entitiesByName] objectForKey:@"TCItemCategory"];
+        NSEntityDescription *e = [NSEntityDescription entityForName:@"TCItemCategory" inManagedObjectContext:_context];
         [request setEntity:e];
         
         //        NSSortDescriptor *sd = [NSSortDescriptor
@@ -254,7 +234,7 @@
         //        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
         
         NSError *error;
-        NSArray *result = [context executeFetchRequest:request error:&error];
+        NSArray *result = [self.context executeFetchRequest:request error:&error];
         if (!result)
         {
             debugMethod();
@@ -268,14 +248,14 @@
 
 - (TCItemCategory*)createItemCategory
 {
-    TCItemCategory *ic = [NSEntityDescription insertNewObjectForEntityForName:@"TCItemCategory" inManagedObjectContext:context];
+    TCItemCategory *ic = [NSEntityDescription insertNewObjectForEntityForName:@"TCItemCategory" inManagedObjectContext:self.context];
     [allItemCategorys addObject:ic];
     return ic;
 }
 
 - (void)removeItemCategory:(TCItemCategory*)itemCategpry
 {
-    [context deleteObject:itemCategpry];
+    [self.context deleteObject:itemCategpry];
     [allItemCategorys removeObject:itemCategpry];
 }
 
@@ -283,7 +263,7 @@
 
 - (void)removeList:(TCList*)p
 {
-    [context deleteObject:p];
+    [self.context deleteObject:p];
     [allLists removeObject:p];
 }
 
@@ -294,7 +274,7 @@
 
 - (TCList *)createList
 {
-    TCList *l = [NSEntityDescription insertNewObjectForEntityForName:@"TCList" inManagedObjectContext:context];
+    TCList *l = [NSEntityDescription insertNewObjectForEntityForName:@"TCList" inManagedObjectContext:self.context];
     [allLists addObject:l];
     return l;
 }
@@ -305,7 +285,7 @@
     {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
-        NSEntityDescription *e = [[model entitiesByName] objectForKey:@"TCList"];
+        NSEntityDescription *e = [NSEntityDescription entityForName:@"TCList" inManagedObjectContext:_context];
         [request setEntity:e];
         
         //        NSSortDescriptor *sd = [NSSortDescriptor
@@ -314,7 +294,7 @@
         //        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
         
         NSError *error;
-        NSArray *result = [context executeFetchRequest:request error:&error];
+        NSArray *result = [self.context executeFetchRequest:request error:&error];
         if (!result)
         {
             debugMethod();
@@ -330,7 +310,7 @@
 
 - (void)removeListCategory:(TCListCategory*)listCategory
 {
-    [context deleteObject:listCategory];
+    [self.context deleteObject:listCategory];
     [allListCategorys removeObject:listCategory];
 }
 
@@ -341,7 +321,7 @@
 
 - (TCListCategory*)createListCategory
 {
-    TCListCategory *lc = [NSEntityDescription insertNewObjectForEntityForName:@"TCListCategory" inManagedObjectContext:context];
+    TCListCategory *lc = [NSEntityDescription insertNewObjectForEntityForName:@"TCListCategory" inManagedObjectContext:self.context];
     [allListCategorys addObject:lc];
     return lc;
 }
@@ -352,7 +332,7 @@
     {
         NSFetchRequest *request = [[NSFetchRequest alloc] init];
         
-        NSEntityDescription *e = [[model entitiesByName] objectForKey:@"TCListCategory"];
+        NSEntityDescription *e = [NSEntityDescription entityForName:@"TCListCategory" inManagedObjectContext:_context];
         [request setEntity:e];
         
         //        NSSortDescriptor *sd = [NSSortDescriptor
@@ -361,7 +341,7 @@
         //        [request setSortDescriptors:[NSArray arrayWithObject:sd]];
         
         NSError *error;
-        NSArray *result = [context executeFetchRequest:request error:&error];
+        NSArray *result = [self.context executeFetchRequest:request error:&error];
         if (!result)
         {
             debugMethod();
@@ -371,14 +351,14 @@
         
         allListCategorys = [[NSMutableArray alloc] initWithArray:result];
     }
-
+    
 }
 
 
 - (BOOL)saveChanges
 {
     NSError *err = nil;
-    BOOL successful = [context save:&err];
+    BOOL successful = [self.context save:&err];
     if (!successful) {
         NSLog(@"Error saving: %@", [err localizedDescription]);
     }

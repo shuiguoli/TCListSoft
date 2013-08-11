@@ -7,10 +7,36 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TCItemPropertyCell.h"
+#import "TCTableViewController.h"
+@class TCList;
+//ItemsView显示模式
+typedef enum{
+    TCItemDisplayAddToListMode,
+    TCItemDisplayShowMode
+}TCItemsDisplayMode;
 
-@interface TCItemsViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
-{
-    __weak IBOutlet UITableView *tableView;
-}
+@protocol TCItemsViewControllerAddToListModeDelegate <NSObject>
+
+-(void)finishSelectItems:(TCList*)addToList;
 
 @end
+
+@interface TCItemsViewController : TCTableViewController<TCItemPropertyCellDelegate>
+{
+
+}
+@property (nonatomic,readonly) TCItemsDisplayMode displayMode;
+@property (nonatomic,strong) UIView *coverView;
+@property (nonatomic,weak) TCList *addToList;
+@property (nonatomic,weak) UIViewController<TCItemsViewControllerAddToListModeDelegate> *delegate;
+- (id)initWithSytle:(UITableViewStyle)style andDisplayMode:(TCItemsDisplayMode)mode;
+- (void)showLeftView:(id)sender;
+- (void)cancelSelect;
+- (void)finishSelect;
+- (void)addNewItem;
+
+@end
+
+
+

@@ -15,6 +15,6 @@
     __weak IBOutlet UIToolbar *tooBar;
 }
 
-- (IBAction)showSettings:(id)sender;
-- (IBAction)setEditing:(id)sender;
+- (void)showSettings:(id)sender;
+- (void)setEditing;
 @end

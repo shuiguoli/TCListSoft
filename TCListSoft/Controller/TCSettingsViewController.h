@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TCTableViewController.h"
 
-@interface TCSettingsViewController : UIViewController
+@interface TCSettingsViewController :TCTableViewController
 {
     
     __weak IBOutlet UITableView *_tableView;

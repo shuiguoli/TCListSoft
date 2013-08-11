@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface TCListViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+#import "TCTableViewController.h"
+@interface TCListViewController : TCTableViewController
 {
-    __weak IBOutlet UITableView *tableView;
+    
 }
 
-- (IBAction)saveChange:(id)sender;
+- (void)saveChange:(id)sender;
 - (void)addNewList;
+- (void)showLeftView:(id)sender;
 @end

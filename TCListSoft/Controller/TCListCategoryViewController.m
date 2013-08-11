@@ -9,10 +9,12 @@
 #import "TCListCategoryViewController.h"
 #import "TCListCategory.h"
 #import "TCDataStore.h"
+#import "TCSettingsViewController.h"
 
 @interface TCListCategoryViewController ()
 {
     NSArray *allListCategorys;
+    
 }
 @end
 
@@ -31,6 +33,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.revealController setMinimumWidth:280.0f maximumWidth:280.0f forViewController:self];
+    UIBarButtonItem *editBBI = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(setEditing:)];
+    UIBarButtonItem *itemSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:self action:nil];
+    UIBarButtonItem *settingBBI = [[UIBarButtonItem alloc] initWithTitle:@"设置" style:UIBarButtonItemStyleBordered target:self action:@selector(showSettings:)];
+    NSArray *array = [NSArray arrayWithObjects:editBBI,itemSpace,settingBBI, nil];
+    [tooBar setItems:array];
+
     // Do any additional setup after loading the view from its nib.
 }
 
@@ -47,21 +56,28 @@
     [super viewDidUnload];
 }
 
-- (IBAction)showSettings:(id)sender
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
+    [super setEditing:editing animated:animated];
+    [_tableView setEditing:editing animated:animated];
     
 }
+- (void)showSettings:(id)sender
+{
+    TCSettingsViewController *setView = [[TCSettingsViewController alloc]init];
+    [self.navigationController pushViewController:setView animated:YES];
+}
 
-- (IBAction)setEditing:(id)sender
+- (void)setEditing:(id)sender
 {
     if([self isEditing])
     {
-        [sender setTitle:@"编辑" forState:UIControlStateNormal];
+        [sender setTitle:@"编辑"];
         [self setEditing:NO animated:YES];
     }
     else
     {
-        [sender setTitle:@"完成" forState:UIControlStateNormal];
+        [sender setTitle:@"完成"];
         [self setEditing:YES animated:YES];
     }
 }
@@ -70,7 +86,14 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
+-(void)tableView:(UITableView *)tableView willBeginEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"begin editing %@",indexPath);
+}
+-(void) tableView:(UITableView *)tableView didEndEditingRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"end editting %@",indexPath);
+}
 #pragma mark - tableViewDataSource
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

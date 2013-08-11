@@ -21,11 +21,11 @@
     NSMutableArray *allItemPropertys;
     NSMutableArray *allItemCategorys;
     NSMutableArray *allListCategorys;
-    NSManagedObjectContext *context;
     NSManagedObjectModel *model;
 }
-
+@property (nonatomic,strong)NSManagedObjectContext *context;
 + (TCDataStore *)sharedStore;
+- (NSManagedObjectContext*)moContext;
 - (void)test;
 //item
 - (void)removeItem:(TCItem*)p;

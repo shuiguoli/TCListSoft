@@ -11,38 +11,36 @@
 #import "TCList.h"
 #import "TCListCategory.h"
 #import "TCDataStore.h"
-#import "TCEditListViewController.h"
+#import "TCEditListViewControler.h"
+#import "TCAddListViewController.h"
+#import "TCTableViewController.h"
 @interface TCListViewController ()
 {
-    NSArray *allLists;
-    TCDataStore *dataStore;
+
 }
 @end
 
 @implementation TCListViewController
 
--(id) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+-(id) initWithStyle:(UITableViewStyle)style
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithStyle:style];
     if(self)
     {
-        dataStore = [TCDataStore sharedStore];
         if ([[NSUserDefaults standardUserDefaults] boolForKey:@"firstLaunch"])
         {
             // 这里判断是否第一次
             UIAlertView *alert=[[UIAlertView alloc] initWithTitle:@"第一次" message:@"进入App" delegate:self cancelButtonTitle:@"我知道了" otherButtonTitles:nil];
-            [dataStore test];
             [alert show];
         }
+        UIImage *revealImagePortrait = [UIImage imageNamed:@"reveal_menu_icon_portrait"];
+        UIImage *revealImageLandscape = [UIImage imageNamed:@"reveal_menu_icon_landscape"];
         UINavigationItem *n = [self navigationItem];
-        UIBarButtonItem *bbi = [[UIBarButtonItem alloc ]initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewList)];
+        n.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:revealImagePortrait landscapeImagePhone:revealImageLandscape style:UIBarButtonItemStylePlain target:self action:@selector(showLeftView:)];
+		n.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加" style:UIBarButtonItemStyleBordered target:self action:@selector(addList:)];
         n.title = @"List";
-        [n setRightBarButtonItem:bbi];
-
-        allLists = [dataStore allList];
-        return self;
     }
-    return nil;
+    return self;
 }
 
 
@@ -50,11 +48,17 @@
 {
     [super viewDidLoad];
     
+    UIButton *headerView = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, 300, 44)];
+    headerView.backgroundColor = [UIColor grayColor];
+    [headerView addTarget:self action:@selector(addList:) forControlEvents:UIControlEventTouchUpInside];
+    [self.tableView setTableHeaderView:headerView];
+    [self setEditing:NO animated:YES];
     // Uncomment the following line to preserve selection between presentations.
 //    self.clearsSelectionOnViewWillAppear = NO;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //    self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -62,20 +66,59 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - editing
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+	[super setEditing:editing animated:animated];
+	if (editing) {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleEditMode:)];
+	}
+    else
+    {
+		self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(toggleEditMode:)];
+	}
+}
+
+- (void)toggleEditMode:(id)sender
+{
+	[self setEditing:!self.editing animated:YES];
+}
+
+- (void)addList:(id)sender
+{
+    TCAddListViewController *addListViewController = [[TCAddListViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:addListViewController];
+    //设置弹出视图形式
+    addListViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    [self.navigationController presentViewController:navigation animated:YES completion:nil];
+}
+
+- (void)_addList:(TCList*)newList
+{
+    //完成后回调
+}
+
+- (NSEntityDescription*)entity
+{
+    NSEntityDescription *entity = [NSEntityDescription entityForName:NSStringFromClass([TCList class]) inManagedObjectContext:self.managedObjectContext];
+	return entity;
+}
+
+- (NSArray *)sortDescriptors
+{
+    return [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+}
+
+- (NSPredicate *)predicate
+{
+	return nil;
+}
+
+- (NSString *)sectionNameKeyPath
+{
+	return nil;
+}
+
 #pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return [allLists count];
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -86,49 +129,16 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     // Configure the cell...
-    TCList *list = [allLists objectAtIndex:indexPath.row];
-    cell.textLabel.text = [list valueForKey:@"name"];
+    [self configureCell:cell atIndexPath:indexPath];
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    TCList *list = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    [cell.textLabel setText:list.name];
 }
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
@@ -137,24 +147,21 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     // Navigation logic may go here. Create and push another view controller.
     
-     TCEditListViewController *detailViewController = [[TCEditListViewController alloc] initWithNibName:nil bundle:nil];
-    [detailViewController setList:[allLists objectAtIndex:indexPath.row]];
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-    
+     TCEditListViewControler *detailViewController = [[TCEditListViewControler alloc] initWithStyle:UITableViewStyleGrouped];
+    [detailViewController setList:[self.fetchedResultsController objectAtIndexPath:indexPath]];
+    [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
-- (IBAction)saveChange:(id)sender
+- (void)showLeftView:(id)sender
 {
-    [dataStore saveChanges];
-    UIView *view = [[UIView alloc] initWithFrame:tableView.frame];
-    view.backgroundColor = [UIColor scrollViewTexturedBackgroundColor];
-    tableView.backgroundView = view;
-    debugMethod();
-}
-
-- (void)addNewList
-{
-    
+    if (self.navigationController.revealController.focusedController == self.navigationController.revealController.leftViewController)
+    {
+        [self.navigationController.revealController showViewController:self.navigationController.revealController.frontViewController];
+    }
+    else
+    {
+        [self.navigationController.revealController showViewController:self.navigationController.revealController.leftViewController];
+    }
+    NSLog(@"taped leftButtonItem");
 }
 @end
