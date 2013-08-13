@@ -7,18 +7,30 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TCItemsViewController.h"
 #import "TCTableViewController.h"
 @class TCList;
-@interface TCAddListViewController : TCTableViewController<UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate>
+typedef enum{
+    TCAddListViewMode,
+    TCEditListViewMode
+}TCListViewMode;
+
+@interface TCAddListViewController : TCTableViewController<UITableViewDataSource,UITableViewDelegate,UIPickerViewDataSource,UIPickerViewDelegate,TCItemsViewControllerAddToListModeDelegate>
 {
     
-     UITableView *addListTableView;
+    __weak IBOutlet UITableView *addListTableView;
     
     UIPickerView *categoryPicker;
     UIToolbar *toolBar;
 }
-
+@property (nonatomic,readonly) TCListViewMode displayMode;
 @property (nonatomic,strong)TCList *list;
 
--(void)finishSelectItems:(TCList*)list;
+@property (nonatomic, retain) UIDatePicker *datePickerView;///
+
+- (void)addNewItem;
+- (void)changeNotifDate:(id)sender;
+- (void)selectButton:(id)sender;
+- (id)initWithSytle:(UITableViewStyle)style andDisplayMode:(TCListViewMode)mode;
+- (void)finishSelectItems:(TCList*)list;
 @end

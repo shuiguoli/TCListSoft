@@ -185,7 +185,9 @@
 {
     if([self.newSelectedItemPropertys count] != 0)
     {
-        UIAlertView *warningView = [[UIAlertView alloc] init];
+        UIAlertView *warningView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"确定取消更改？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [warningView show];
+
         
 #warning 未完成
     }

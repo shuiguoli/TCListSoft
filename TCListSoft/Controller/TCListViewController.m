@@ -85,7 +85,8 @@
 
 - (void)addList:(id)sender
 {
-    TCAddListViewController *addListViewController = [[TCAddListViewController alloc] initWithNibName:nil bundle:nil];
+    //TCAddListViewController *addListViewController = [[TCAddListViewController alloc] initWithNibName:nil bundle:nil];
+    TCAddListViewController *addListViewController = [[TCAddListViewController alloc]initWithSytle:UITableViewStyleGrouped andDisplayMode:TCAddListViewMode];
     UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:addListViewController];
     //设置弹出视图形式
     addListViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -147,7 +148,8 @@
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     // Navigation logic may go here. Create and push another view controller.
     
-     TCEditListViewControler *detailViewController = [[TCEditListViewControler alloc] initWithStyle:UITableViewStyleGrouped];
+     //TCEditListViewControler *detailViewController = [[TCEditListViewControler alloc] initWithStyle:UITableViewStyleGrouped];
+    TCAddListViewController *detailViewController = [[TCAddListViewController alloc]initWithSytle:UITableViewStyleGrouped andDisplayMode:TCEditListViewMode];
     [detailViewController setList:[self.fetchedResultsController objectAtIndexPath:indexPath]];
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
